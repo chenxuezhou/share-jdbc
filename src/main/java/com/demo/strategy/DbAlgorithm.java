@@ -15,7 +15,7 @@ import com.google.common.collect.Range;
 public class DbAlgorithm implements SingleKeyDatabaseShardingAlgorithm<Integer>{
 
 	public Collection<String> doBetweenSharding(Collection<String> availableTargetNames, ShardingValue<Integer> shardingValue) {
-		 Collection<String> result = new LinkedHashSet<>(availableTargetNames.size());  
+		 Collection<String> result = new LinkedHashSet(availableTargetNames.size());
 	        Range<Integer> range = (Range<Integer>) shardingValue.getValueRange();  
 	        for (Integer i = range.lowerEndpoint(); i <= range.upperEndpoint(); i++) {  
 	            for (String each : availableTargetNames) {  
@@ -41,7 +41,7 @@ public class DbAlgorithm implements SingleKeyDatabaseShardingAlgorithm<Integer>{
 	}
 
 	public Collection<String> doInSharding(Collection<String> availableTargetNames, ShardingValue<Integer> shardingValue) {
-		 Collection<String> result = new LinkedHashSet<>(availableTargetNames.size());  
+		 Collection<String> result = new LinkedHashSet(availableTargetNames.size());
 	        for (Integer value : shardingValue.getValues()) {  
 	            for (String tableName : availableTargetNames) {  
 	                if (tableName.endsWith(value % 2 + "")) {  

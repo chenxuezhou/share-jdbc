@@ -16,7 +16,7 @@ import com.google.common.collect.Range;
 public class TbAlgorithm implements SingleKeyTableShardingAlgorithm<Integer>{
 
 	public Collection<String> doBetweenSharding(Collection<String> tableNames, ShardingValue<Integer> shardingValue) {
-		 Collection<String> result = new LinkedHashSet<>(tableNames.size());  
+		 Collection<String> result = new LinkedHashSet(tableNames.size());
 	        Range<Integer> range = (Range<Integer>) shardingValue.getValueRange();  
 	        for (Integer i = range.lowerEndpoint(); i <= range.upperEndpoint(); i++) {  
 	            for (String each : tableNames) {  
@@ -42,7 +42,7 @@ public class TbAlgorithm implements SingleKeyTableShardingAlgorithm<Integer>{
 	}
 
 	public Collection<String> doInSharding(Collection<String> tableNames, ShardingValue<Integer> shardingValue) {
-		 Collection<String> result = new LinkedHashSet<>(tableNames.size());  
+		 Collection<String> result = new LinkedHashSet(tableNames.size());
 	        for (Integer value : shardingValue.getValues()) {  
 	            for (String tableName : tableNames) {  
 	                if (tableName.endsWith(value % 2 + "")) {  
