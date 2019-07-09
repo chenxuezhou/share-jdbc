@@ -41,8 +41,11 @@ public class DbAlgorithm extends AbstractJUnit4SpringContextTests{
         ShardingConnection connection = wholeDataSource.getConnection();
         Statement statement = connection.createStatement();
 //        ResultSet executeQuery = statement.executeQuery("SELECT * FROM  USER ");
-        statement.execute("SELECT * FROM  user ");
+        statement.execute("SELECT * FROM  user u LEFT JOIN user_test ut on ut.id=u.id  WHERE name LIKE '%g%'  limit 0,2");
         ResultSet rs = statement.getResultSet();
+//        rs.last();
+//        rs.insertRow();
+//        rs.cancelRowUpdates();
         // 展开结果集数据库
         while(rs.next()){
             // 通过字段检索

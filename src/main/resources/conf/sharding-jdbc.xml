@@ -71,7 +71,7 @@
 			<rdb:table-rules>
 				<rdb:table-rule logic-table="user" actual-tables="user_0,user_1"
 					database-strategy="idDbSharding" table-strategy="idTbSharding" />
-				<rdb:table-rule logic-table="order"></rdb:table-rule>
+				<rdb:table-rule logic-table="user_test" actual-tables="user_test" data-source-names="rbb_1"></rdb:table-rule>
 			</rdb:table-rules>
 			<!--<rdb:table-rules>-->
 				<!--<rdb:table-rule logic-table="order"/>-->
